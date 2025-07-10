@@ -12,6 +12,6 @@ annual_savings = monthly_savings * 12
 interest = annual_savings * 0.05
 projected_savings = annual_savings + interest
 
-# Display results
-print("Your monthly savings are $" + str(monthly_savings) + ".")
-print("Projected savings after one year, with interest, is: $" + str(projected_savings) + ".")
+# Display results, removing decimals if not needed
+print("Your monthly savings are $" + str(int(monthly_savings)) + ".")
+print("Projected savings after one year, with interest, is: $" + str(int(projected_savings)) + ".")
