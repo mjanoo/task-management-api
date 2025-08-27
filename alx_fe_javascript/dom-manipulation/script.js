@@ -7,34 +7,47 @@ let quotes = [
 
 // Function to display a random quote
 function displayRandomQuote() {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const quote = quotes[randomIndex];
+  let randomIndex = Math.floor(Math.random() * quotes.length);
+  let randomQuote = quotes[randomIndex];
 
-  const quoteDisplay = document.getElementById("quoteDisplay");
-  quoteDisplay.textContent = `"${quote.text}" — ${quote.category}`;
+  let quoteDisplay = document.getElementById("quoteDisplay");
+  quoteDisplay.innerHTML = "";
+
+  let quoteText = document.createElement("p");
+  quoteText.textContent = `"${randomQuote.text}"`;
+
+  let quoteCategory = document.createElement("span");
+  quoteCategory.textContent = `Category: ${randomQuote.category}`;
+  quoteCategory.style.fontStyle = "italic";
+  quoteCategory.style.color = "gray";
+
+  quoteDisplay.appendChild(quoteText);
+  quoteDisplay.appendChild(quoteCategory);
 }
 
 // Function to add a new quote
-function addQuote() {
-  const text = document.getElementById("newQuoteText").value.trim();
-  const category = document.getElementById("newQuoteCategory").value.trim();
+function addQuote(event) {
+  event.preventDefault();
 
-  if (text === "" || category === "") return;
+  let textInput = document.getElementById("newQuoteText").value.trim();
+  let categoryInput = document.getElementById("newQuoteCategory").value.trim();
 
-  // Add new quote to the array
-  quotes.push({ text, category });
+  if (textInput === "" || categoryInput === "") {
+    alert("Please enter both a quote and a category!");
+    return;
+  }
 
-  // Clear input fields
+  quotes.push({ text: textInput, category: categoryInput });
+
   document.getElementById("newQuoteText").value = "";
   document.getElementById("newQuoteCategory").value = "";
 
-  // Show a random quote including the new one
   displayRandomQuote();
 }
 
 // Event listeners
 document.getElementById("newQuote").addEventListener("click", displayRandomQuote);
-document.getElementById("addQuoteBtn").addEventListener("click", addQuote);
+document.getElementById("quoteForm").addEventListener("submit", addQuote);
 
 // Show a quote on page load
 displayRandomQuote();
