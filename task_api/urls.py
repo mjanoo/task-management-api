@@ -16,11 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+# API root view
+@api_view(['GET'])
+def api_root(request):
+    return Response({
+        'tasks': '/api/tasks/',
+        'users_register': '/api/users/register/',
+        'users_login': '/api/users/login/',
+    })
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('tasks.urls')),
-    path('api/users/', include('users.urls')),  # 👈 add this line
-    path('api-auth/', include('rest_framework.urls')),  # For login/logout in the browser
+
+    # API endpoints
+    path('api/', api_root, name='api-root'),  # API root showing all links
+    path('api/tasks/', include('tasks.urls')),  # Tasks CRUD
+    path('api/users/', include('users.urls')),  # User register/login
+    path('api-auth/', include('rest_framework.urls')),  # Optional browsable login
 ]
 
