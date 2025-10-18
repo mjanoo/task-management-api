@@ -1,33 +1,32 @@
-# Task Management API
+# 🧩 Task Management API
 
-This is a backend project built with Django and Django REST Framework.  
-It helps users manage their daily tasks — they can create, view, update, and delete tasks easily.
+This is a backend project built with **Django** and **Django REST Framework (DRF)**.  
+It helps users manage their daily tasks — allowing them to **create**, **view**, **update**, and **delete** tasks easily through RESTful API endpoints.
 
-## Features
-- User authentication (login and signup)
-- Create, read, update, and delete tasks
+---
+
+## 🚀 Features
+
+- User authentication (signup and login using JWT)
+- Create, read, update, and delete personal tasks
 - Mark tasks as complete or pending
+- Each user can only access their own tasks
 - RESTful API endpoints
+- Django admin panel for managing users and tasks
 
-## Tech Stack
-- Django  
-- Django REST Framework  
-- SQLite (for development)
+---
 
-## Setup Instructions
-1. Clone the repository:
-   ```
-   git clone https://github.com/mjanoo/task-management-api.git
-   ```
-2. Navigate into the project folder:
-   ```
-   cd task-management-api
-   ```
-3. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-4. Run the server:
-   ```
-   python manage.py runserver
-   ```
+## 🛠️ Tech Stack
+
+- **Backend:** Django, Django REST Framework  
+- **Database:** SQLite (for development)  
+- **Authentication:** JSON Web Tokens (JWT)
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the repository:
+```bash
+git clone https://github.com/mjanoo/task-management-api.git
+
